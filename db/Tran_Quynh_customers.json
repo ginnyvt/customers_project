@@ -1,0 +1,44 @@
+[
+    {
+        "customerId": 3000,
+        "firstname": "Layla",
+        "lastname": "Smith",
+        "favoriteIceCream": "vanilla",
+        "customerClass": "KeyCustomer"
+    },
+    {
+        "customerId": 6543,
+        "firstname": "Paula",
+        "lastname": "River",
+        "favoriteIceCream": "vanilla",
+        "customerClass": "R.I.P"
+    },
+    {
+        "customerId": 2000,
+        "firstname": "Abel",
+        "lastname": "Bell",
+        "favoriteIceCream": "raspberry",
+        "customerClass": "OrdinaryPenPusher"
+    },
+    {
+        "customerId": 4123,
+        "firstname": "Olivia",
+        "lastname": "Irony",
+        "favoriteIceCream": "caramel",
+        "customerClass": "SolidGold"
+    },
+    {
+        "customerId": 7987,
+        "firstname": "Duy",
+        "lastname": "Duong",
+        "favoriteIceCream": "toffee",
+        "customerClass": "VIP"
+    },
+    {
+        "customerId": 5600,
+        "firstname": "Quynh",
+        "lastname": "Tran",
+        "favoriteIceCream": "strawberry",
+        "customerClass": "VIP"
+    }
+]

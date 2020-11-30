@@ -1,0 +1,20 @@
+{
+	"name": "tran_quynh_customer_project",
+	"version": "1.0.0",
+	"description": "Assignment for the Nodejs course",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon index.js"
+	},
+	"author": "Tran Quynh",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"ejs": "^3.1.5",
+		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.6"
+	}
+}
