@@ -14,9 +14,7 @@ const handle = async (dto) => {
 			customerData.customerClass || customer.customerClass
 		);
 	} else {
-		return {
-			message: 'customer not found',
-		};
+		return false;
 	}
 
 	return customerRepository.update(customer);

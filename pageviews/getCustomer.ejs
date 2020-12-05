@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+		<title>Customer information</title>
+	</head>
+	<body>
+		<section class="section">
+			<div class="title-wrapper">
+				<h2 class="title">Customer Information</h2>
+			</div>
+			<div class="section-center">
+				<p>CustomerId: <%= customerId %></p>
+				<p>Firstname: <%= firstname %></p>
+				<p>Lastname: <%= lastname %></p>
+				<p>Favorite IceCream: <%= favoriteIceCream %></p>
+				<p>Customer Class: <%= customerClass%></p>
+				<a href="/list-customers"><button class="btn">All customers</button></a>
+				<a href="/"><button class="btn">Menu</button></a>
+			</div>
+		</section>
+	</body>
+</html>

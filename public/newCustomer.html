@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Persons</title>
+		<link rel="stylesheet" href="styles/styles.css" type="text/css" />
+	</head>
+	<body>
+		<section class="section">
+			<div class="title-wrapper">
+				<h2 class="title">Create new customer</h2>
+			</div>
+
+			<div class="section-center">
+				<!-- Form -->
+				<form id="form">
+					<div class="form-group">
+						<label for="customerId">customerId</label>
+						<input
+							type="number"
+							id="customerId"
+							name="customerId"
+							size="4"
+							required
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="firstname">firstname</label>
+						<input
+							type="text"
+							id="firstname"
+							name="firstname"
+							size="15"
+							required
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="lastname">lastname</label>
+						<input
+							type="text"
+							id="lastname"
+							name="lastname"
+							size="25"
+							required
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="favoriteIceCream">favoriteIceCream</label>
+						<input
+							type="text"
+							id="favoriteIceCream"
+							name="favoriteIceCream"
+							size="15"
+							required
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="customerClass">customerClass</label>
+						<input
+							type="text"
+							id="customerClass"
+							name="customerClass"
+							size="5"
+							required
+						/>
+					</div>
+
+					<button type="submit" class="btn">Submit</button>
+				</form>
+
+				<!-- Error div -->
+				<div class="errorDiv" id="errorDiv">
+					<p id="errorMess">errors</p>
+				</div>
+				<!-- Success Div -->
+				<div class="successDiv" id="successDiv">
+					<div id="successMes">success</div>
+				</div>
+				<!-- Back to homepage button -->
+				<a href="/"><button class="btn">Menu</button></a>
+			</div>
+		</section>
+
+		<script>
+			const form = document.getElementById('form');
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				// 1.get value from fields
+				const customerId = parseInt(form.customerId.value);
+				const firstname = form.firstname.value;
+				const lastname = form.lastname.value;
+				const favoriteIceCream = form.favoriteIceCream.value;
+				const customerClass = form.customerClass.value;
+
+				// 3.make a post request to backend
+				const res = await fetch('/customers', {
+					method: 'POST',
+					// 2.form a json object from the fields
+					body: JSON.stringify({
+						customerId,
+						firstname,
+						lastname,
+						favoriteIceCream,
+						customerClass,
+					}),
+					headers: { 'Content-Type': 'application/json' },
+				});
+
+				const data = await res.json();
+				console.log(data);
+				if (data.success === false) {
+					const errorDiv = document.getElementById('errorDiv');
+					const errorMess = document.getElementById('errorMess');
+					errorDiv.classList.add('show');
+					errorMess.textContent = data.message;
+					form.style.display = 'none';
+				} else {
+					const successDiv = document.getElementById('successDiv');
+					const successData = document.getElementById('successMes');
+					successDiv.classList.add('show');
+					successData.innerHTML = `
+					<h4>Customer created succesfully</h4>
+					<p>CustomerId: ${data.data.customerId}</p>
+					<p>Firstname: ${data.data.firstname}</p>
+					<p>Lastname: ${data.data.lastname}</p>
+					<p>Favorite Icecream: ${data.data.favoriteIceCream}</p>
+					<p>Customer Class: ${data.data.customerClass}</p>
+					`;
+					form.style.display = 'none';
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -42,18 +42,18 @@ const get = async (dto) => {
 };
 
 // Insert new customer
-const insert = async (dto) => {
+const insert = async (customer) => {
 	const customers = await readDB();
-	customers.push(dto);
+	customers.push(customer);
 	await writeToDB(customers);
-	return { dto, message: 'Customer created succesfully' };
+	return customer;
 };
 
 // Check Exist
-const checkExist = async (dto) => {
+const checkExist = async (customer) => {
 	const customers = await readDB();
-	const existCustomer = customers.filter((customer) => {
-		return customer.customerId === parseInt(dto.customerId);
+	const existCustomer = customers.filter((x) => {
+		return x.customerId === parseInt(customer.customerId);
 	});
 	return existCustomer.length > 0;
 };
@@ -76,7 +76,7 @@ const update = async (customer) => {
 	});
 	customers[index] = customer;
 	await writeToDB(customers);
-	return { customer, message: 'Customer updated succesfully' };
+	return customer;
 };
 
 module.exports = { listAll, checkExist, insert, get, update, remove };

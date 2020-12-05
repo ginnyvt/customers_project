@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Delete customer</title>
+		<link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+	</head>
+	<body>
+		<section class="section">
+			<div class="section-center">
+				<!-- Success Div -->
+				<div class="successDiv" id="delSuc"></div>
+
+				<!-- Back to homepage button -->
+				<a href="/"><button class="btn">Menu</button></a>
+			</div>
+		</section>
+
+		<script>
+			function getValueAtIndex(index) {
+				var str = window.location.href;
+				return str.split('/')[index];
+			}
+
+			window.addEventListener('load', async () => {
+				const id = getValueAtIndex(4);
+				const response = await fetch(`/customer/${id}`, {
+					method: 'DELETE',
+				});
+				const result = await response.json();
+				if (result.success === true) {
+					const successDiv = document.getElementById('delSuc');
+					successDiv.classList.add('show');
+					const {
+						customerId,
+						firstname,
+						lastname,
+						favoriteIceCream,
+						customerClass,
+					} = result.data.customer;
+
+					successDiv.innerHTML = `
+          	<h4>This customer has been removed successfully</h4>
+            <p>CustomerId: ${customerId}</p>
+					  <p>Firstname: ${firstname}</p>
+					  <p>Lastname: ${lastname}</p>
+					  <p>Favorite Icecream: ${favoriteIceCream}</p>
+					  <p>Customer Class: ${customerClass}</p>
+          `;
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+		<title>Update Customer</title>
+	</head>
+	<body>
+
+  <section class="section">
+    <div class="title-wrapper">
+      <h2 class="title">Update information</h2>
+    </div>
+  
+    <div class="section-center">
+      <!-- Form -->
+      <form id="form">
+        <div class="form-group">
+          <label for="customerId">customerId</label>
+          <input type="number" id="customerId" name="customerId" value="" size="4"  disabled/>
+        </div>
+  
+        <div class="form-group">
+          <label for="firstname">firstname</label>
+          <input type="text" id="firstname" name="firstname" size="15" />
+        </div>
+  
+        <div class="form-group">
+          <label for="lastname">lastname</label>
+          <input type="text" id="lastname" name="lastname" size="25"  />
+        </div>
+  
+        <div class="form-group">
+          <label for="favoriteIceCream">favoriteIceCream</label>
+          <input type="text" id="favoriteIceCream" name="favoriteIceCream" size="15"  />
+        </div>
+  
+        <div class="form-group">
+          <label for="customerClass">customerClass</label>
+          <input type="text" id="customerClass" name="customerClass" size="5"  />
+        </div>
+  
+    <button type="submit" class="btn">Submit</button>
+      </form>
+
+          
+            <!-- Back to homepage button -->
+            <a href="/"><button class="btn" style="margin-bottom:1rem">Menu</button></a>
+
+<!-- Success Div -->
+<div class="successDiv" id="updateSuc">
+  <div id="updateMes"></div>
+</div>
+
+      <script>
+        function getValueAtIndex(index) {
+            var str = window.location.href;
+            return str.split('/')[index];
+          }
+
+        
+
+          const form = document.getElementById('form');
+          form.addEventListener('submit', async (e)=>{
+            e.preventDefault();
+
+            const customerId = getValueAtIndex(4);
+            const firstname = form.firstname.value;
+            const lastname = form.lastname.value;
+            const favoriteIceCream = form.favoriteIceCream.value;
+            const customerClass = form.customerClass.value;
+
+            const res = await fetch(`/customer/${customerId}`, {
+              method: 'PATCH',
+              // 2.form a json object from the fields
+              body: JSON.stringify({
+                customerId,
+                firstname,
+                lastname,
+                favoriteIceCream,
+                customerClass,
+              }),
+              headers: { 'Content-Type': 'application/json' },
+            });
+
+            const result = await res.json();
+            if(result.success ===true){
+              const updateSuc = document.getElementById('updateSuc');
+              const updateMes = document.getElementById('updateMes')
+              updateSuc.classList.add('show')
+              updateMes.innerHTML = `
+              <h4>Customer updated succesfully</h4>
+					<p>CustomerId: ${result.data.customerId}</p>
+					<p>Firstname: ${result.data.firstname}</p>
+					<p>Lastname: ${result.data.lastname}</p>
+					<p>Favorite Icecream: ${result.data.favoriteIceCream}</p>
+					<p>Customer Class: ${result.data.customerClass}</p>
+              
+              
+              
+              `
+              form.style.display = 'none'
+            }
+
+
+
+
+
+
+
+          })
+      </script>
+  </body>
+</html>

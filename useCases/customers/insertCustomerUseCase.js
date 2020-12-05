@@ -3,22 +3,22 @@ const customerRepository = require('../../repositories/customerRepository');
 
 // handle validated customer's data
 
-const handle = async (validatedDto) => {
-	const existCustomer = await customerRepository.checkExist(validatedDto);
-	console.log(existCustomer);
+const handle = async (validCustomer) => {
+	const existCustomer = await customerRepository.checkExist(validCustomer);
 
 	if (existCustomer) {
-		return { message: 'customer already exist' };
+		return false;
 	} else {
 		const newCustomer = new Customer(
-			validatedDto.customerId,
-			validatedDto.firstname,
-			validatedDto.lastname,
-			validatedDto.favoriteIceCream,
-			validatedDto.customerClass
+			validCustomer.customerId,
+			validCustomer.firstname,
+			validCustomer.lastname,
+			validCustomer.favoriteIceCream,
+			validCustomer.customerClass
 		);
 
-		return await customerRepository.insert(newCustomer);
+		await customerRepository.insert(newCustomer);
+		return newCustomer;
 	}
 };
 

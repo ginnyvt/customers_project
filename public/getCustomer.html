@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+		<title>Customer information</title>
+	</head>
+
+	<body>
+		<section class="section">
+			<div class="title-wrapper">
+				<h2 class="title">Customer Information</h2>
+			</div>
+			<div class="section-center" id="customer-info"></div>
+		</section>
+
+		<script>
+			function getValueAtIndex(index) {
+				var str = window.location.href;
+				return str.split('/')[index];
+			}
+
+			window.addEventListener('load', async () => {
+				const id = getValueAtIndex(4);
+				const response = await fetch(`/customer/${id}`);
+				const result = await response.json();
+
+				const customerInfo = document.getElementById('customer-info');
+				customerInfo.innerHTML = `
+				<p>CustomerId: ${result.customerId}</p>
+				<p>Firstname: ${result.firstname}</p>
+				<p>Lastname: ${result.lastname}</p>
+				<p>Favorite IceCream: ${result.favoriteIceCream}</p>
+				<p>Customer Class: ${result.customerClass}</p>
+				
+					<div class="section-center">
+				<a href="/"><button class="btn">Menu</button></a>
+				<a href="/list-customers"><button class="btn">All customers</button></a>
+				<a href="/update-customer/${result.customerId}"
+					><button class="btn">Update customer</button></a
+				>
+				<a href="/delete-customer/${result.customerId}"
+					><button class="btn">Remove customer</button></a
+				>
+			</div>
+				
+				
+				
+				
+				`;
+			});
+		</script>
+	</body>
+</html>

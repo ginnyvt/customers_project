@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Persons</title>
+		<link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+	</head>
+
+	<body>
+		<section class="section">
+			<div class="title-wrapper">
+				<h2 class="title">All customers</h2>
+			</div>
+
+			<div class="section-center">
+				<table id="table">
+					<thead>
+						<tr>
+							<th>customerId</th>
+							<th>firstname</th>
+							<th>lastname</th>
+							<th>favoriteIceCream</th>
+							<th>customerClass</th>
+						</tr>
+					</thead>
+					<tbody id="table-body"></tbody>
+				</table>
+
+				<div class="section-center" id="no-customers">
+					<p>There is no customer.</p>
+					<a href="/add-customer"
+						><button class="btn">Create new customer</button></a
+					>
+					<a href="/"><button class="btn">Menu</button></a>
+				</div>
+			</div>
+		</section>
+
+		<script>
+			window.addEventListener('load', async () => {
+				const response = await fetch('/customers');
+				const data = await response.json();
+				if (data.length > 0) {
+					const tableBody = document.getElementById('table-body');
+					let displayTable = data.map((customer) => {
+						const {
+							firstname,
+							customerId,
+							favoriteIceCream,
+							lastname,
+							customerClass,
+						} = customer;
+
+						return `
+							<tr>
+								<td>
+								<a href="./view-customer/${customerId}"> ${customerId}
+								</a>
+								</td>
+								<td>${firstname}</td>
+								<td>${lastname}</td>
+								<td>${favoriteIceCream}</td>
+								<td>${customerClass}</td>
+							</tr>`;
+					});
+
+					displayTable = displayTable.join('');
+					tableBody.innerHTML = displayTable;
+				} else {
+					const table = document.getElementById('table');
+					const noCustomer = document.getElementById('no-customers');
+					noCustomer.classList.add('show');
+					table.style.display = 'none';
+				}
+			});
+		</script>
+	</body>
+</html>
