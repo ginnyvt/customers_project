@@ -1,44 +1,51 @@
 [
-    {
-        "customerId": 1000,
-        "firstname": "Quynh",
-        "lastname": "Doe",
-        "favoriteIceCream": "vanilla",
-        "customerClass": "Newbie"
-    },
-    {
-        "customerId": 6543,
-        "firstname": "Paula",
-        "lastname": "River",
-        "favoriteIceCream": "strawberry",
-        "customerClass": "R.I.P"
-    },
-    {
-        "customerId": 2000,
-        "firstname": "Abel",
-        "lastname": "Bell",
-        "favoriteIceCream": "raspberry",
-        "customerClass": "OrdinaryPenPusher"
-    },
-    {
-        "customerId": 5000,
-        "firstname": "Sophie",
-        "lastname": "Garcia",
-        "favoriteIceCream": "chocolate",
-        "customerClass": "ToBeAwoided"
-    },
-    {
-        "customerId": 4123,
-        "firstname": "Olivia",
-        "lastname": "Irony",
-        "favoriteIceCream": "caramel",
-        "customerClass": "SolidGold"
-    },
-    {
-        "customerId": 7987,
-        "firstname": "Matt",
-        "lastname": "Lake",
-        "favoriteIceCream": "toffee",
-        "customerClass": "VIP"
-    }
+	{
+		"customerId": 3000,
+		"firstname": "Layla",
+		"lastname": "Smith",
+		"favoriteIceCream": "vanilla",
+		"customerClass": "KeyCustomer"
+	},
+	{
+		"customerId": 1000,
+		"firstname": "Jeff",
+		"lastname": "Hammer",
+		"favoriteIceCream": "blueberry",
+		"customerClass": "SuperBonus"
+	},
+	{
+		"customerId": 6543,
+		"firstname": "Paula",
+		"lastname": "River",
+		"favoriteIceCream": "strawberry",
+		"customerClass": "R.I.P"
+	},
+	{
+		"customerId": 2000,
+		"firstname": "Abel",
+		"lastname": "Bell",
+		"favoriteIceCream": "raspberry",
+		"customerClass": "OrdinaryPenPusher"
+	},
+	{
+		"customerId": 5000,
+		"firstname": "Sophie",
+		"lastname": "Garcia",
+		"favoriteIceCream": "chocolate",
+		"customerClass": "ToBeAwoided"
+	},
+	{
+		"customerId": 4123,
+		"firstname": "Olivia",
+		"lastname": "Irony",
+		"favoriteIceCream": "caramel",
+		"customerClass": "SolidGold"
+	},
+	{
+		"customerId": 7987,
+		"firstname": "Matt",
+		"lastname": "Lake",
+		"favoriteIceCream": "toffee",
+		"customerClass": "VIP"
+	}
 ]

@@ -91,4 +91,6 @@ app.delete('/customer/:id', async (req, res) => {
 	res.end(JSON.stringify(data));
 });
 
-app.listen(port, host);
+app.listen(port, host, ()=>{
+	console.log(`Server is running on the ${host}:${port}`);
+});

@@ -71,6 +71,8 @@
             const favoriteIceCream = form.favoriteIceCream.value;
             const customerClass = form.customerClass.value;
 
+
+            
             const res = await fetch(`/customer/${customerId}`, {
               method: 'PATCH',
               // 2.form a json object from the fields
